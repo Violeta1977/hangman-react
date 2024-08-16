@@ -2,25 +2,16 @@ import Hangman from '../img/hangman.png';
 import './Game.css'
 
 export function Game(){
-const btn = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-function handleLetterClick(){
-console.log(`Click ${btn}`);
-console.log(btn);
+const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 
+function handleLetterClick (letter){
+    console.log(letter);
+    
 }
-
-
-function renderBtn(){
-    return btn.map((letter,index) => 
-    (
-        <button className='gameBtn' key={index} onClick={() =>handleLetterClick(letter)}>{letter}</button>
-    ))
+const renderButton = () => {
+    return btn.map((letter,index) => (<button className='gameBtn' key={index} onClick={() => handleLetterClick(letter)}>{letter}</button>))
 }
-
-
-
 
     return (
         <>
@@ -33,7 +24,7 @@ function renderBtn(){
     <div className='gameKeyboardContainer'>
       <div className='gameWord'>WORD</div>
       <div className='gameKeyboard'>
-         {renderBtn()}
+        {renderButton()}
       </div>
       <div className='errorsContainer'>
         <p className='errors'>0/6</p>
