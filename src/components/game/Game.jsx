@@ -22,7 +22,7 @@ function handleLetterClick (letter){
         setGuesses([...guesses,letter]);
 
         if (!guesses.includes(letter) === word)
-        setGuesses(guesses +1);
+        setGuesses(guesses + 1);
 
 
 }
