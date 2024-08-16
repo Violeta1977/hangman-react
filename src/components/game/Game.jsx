@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import Hangman from '../img/hangman.png';
 import './Game.css'
+import { WordList } from '../wordsList/WordsList';
 
 export function Game(){
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const words = ['BEAR', 'HIPPO', 'deer', 'monkey']
-const [word] = useState(words[Math.floor(Math.random() * words.length)]);
+
+const [word] = useState(WordList);
 const [guesses, setGuesses] = useState([]);
 
 function displayWord (){
   return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
-    
-
-   
 };
 
 function handleLetterClick (letter){
@@ -24,9 +22,7 @@ function handleLetterClick (letter){
         if (!guesses.includes(letter) === word)
         setGuesses(guesses + 1);
 
-
 }
-
 
 const renderButton = () => {
     return btn.map((letter,index) => (<button className='gameBtn' key={index} onClick={() => handleLetterClick(letter)}>{letter}</button>))
