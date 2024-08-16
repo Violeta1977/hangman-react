@@ -37,6 +37,7 @@ img {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    width: 25rem;
 }
 
 .gameBtn {
@@ -48,7 +49,7 @@ img {
     height: 1.3em;
     cursor: grabbing;
     border-radius: 0.5em;
-    /* border: none; */
+    border: none;
 }
 
 .errorsContainer {
