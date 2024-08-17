@@ -5,22 +5,24 @@ import { WordList } from '../wordsList/WordsList';
 
 export function Game(){
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const maxErrors = 6;
 
 const [word] = useState(WordList);
 const [guesses, setGuesses] = useState([]);
+const [errors, setErrors] = useState(0);
 
 function displayWord (){
   return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
 };
 
 function handleLetterClick (letter){
-    if (guesses.includes(letter) )
+    if (guesses.includes(letter) || errors >= maxErrors )
         return;
-    
-        setGuesses([...guesses,letter]);
+    if (!word.includes(letter)){
+        setErrors(errors + 1);
+     }
+     setGuesses([...guesses,letter]);
 
-        if (!guesses.includes(letter) === word)
-        setGuesses(guesses + 1);
 }
 
 const getButtonClass= (letter)=> {
@@ -32,7 +34,12 @@ const getButtonClass= (letter)=> {
 }
 
 const renderButton = () => {
-    return btn.map((letter,index) => (<button className={getButtonClass(letter)} key={index} onClick={() => handleLetterClick(letter)}>{letter}</button>))
+    return btn.map((letter,index) => 
+      (<button className={getButtonClass(letter)} 
+               key={index} 
+               onClick={() => handleLetterClick(letter)}
+               disabled={guesses.includes(letter)} 
+      >{letter}</button>))
 }
 
     return (
