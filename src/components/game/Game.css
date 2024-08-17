@@ -1,9 +1,9 @@
 .resultContainer {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    /* flex-direction: column; */
-    gap: 4rem;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
     padding-bottom: 2rem;
     font-size: 1.5rem;
     font-weight: 900;

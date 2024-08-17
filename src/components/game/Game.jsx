@@ -1,15 +1,31 @@
 import { useState } from 'react';
-import Hangman from '../img/hangman.png';
+import hangman0 from '../img/hangman0.png';
+import hangman1 from '../img/hangman1.png';
+import hangman2 from '../img/hangman2.png';
+import hangman3 from '../img/hangman3.png';
+import hangman4 from '../img/hangman4.png';
+import hangman5 from '../img/hangman5.png';
+import hangman6 from '../img/hangman6.png';
 import './Game.css'
 import { WordList } from '../wordsList/WordsList';
 
 export function Game(){
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const maxErrors = 6;
+const image = [
+  hangman0,
+  hangman1,
+  hangman2,
+  hangman3,
+  hangman4,
+  hangman5,
+  hangman6,
 
+]
 const [word, setWord] = useState(WordList());
 const [guesses, setGuesses] = useState([]);
 const [errors, setErrors] = useState(0);
+
 
 function displayWord (){
   return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
@@ -36,7 +52,10 @@ function restartGame() {
   setWord(WordList)
     setGuesses([]);
     setErrors(0);
+}
 
+function getCurentImage() {
+  return image[errors];
 }
 
 const isGameOver = errors >= maxErrors;
@@ -47,18 +66,17 @@ function renderButton() {
       (<button className={getButtonClass(letter)} 
                key={index} 
                onClick={() => handleLetterClick(letter)}
-               disabled={guesses.includes(letter)|| isGameOver||isGameWon} 
-      >{letter}</button>))
+               disabled={guesses.includes(letter)|| isGameOver||isGameWon}>{letter}</button>)) 
 }
 
     return (
         <>
   <div className='resultContainer'>
-    <p>POINTS</p>
-    <p>POINTS</p>
+    <p>Win</p>
+    <p>Looses</p>
   </div>
   <div className='gameContainer'>
-      <img src={Hangman} alt="hangman"/>
+      <img src={getCurentImage()} alt="hangman"/>
     <div className='gameKeyboardContainer'>
       <div className='gameWord'>{displayWord()}</div>
       <div className='gameKeyboard'>
