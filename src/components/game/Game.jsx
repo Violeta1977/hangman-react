@@ -32,6 +32,12 @@ function getButtonClass(letter) {
     } 
 }
 
+function restartGame() {
+    setGuesses([]);
+    setErrors(0);
+
+}
+
 const isGameOver = errors >= maxErrors;
 const isGameWon = displayWord().split(' ').join('') === word;
 
@@ -61,7 +67,7 @@ function renderButton() {
         <p className='errors'>{errors}/{maxErrors}</p>
         {isGameOver && <p className='errorsText'>Nope... It was {word} </p>}
         {isGameWon && <p className='errorsText'>Yes!!! You are so smart 🤩</p>}
-        <button className='restartBtn'>Let`s play again</button>
+        <button className='restartBtn' onClick={restartGame}>Let`s play again</button>
       </div>
     </div>
   </div>
