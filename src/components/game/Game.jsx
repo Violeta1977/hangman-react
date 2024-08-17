@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import hangman0 from '../img/hangman0.png';
 import hangman1 from '../img/hangman1.png';
 import hangman2 from '../img/hangman2.png';
@@ -25,6 +25,7 @@ const image = [
 const [word, setWord] = useState(WordList());
 const [guesses, setGuesses] = useState([]);
 const [errors, setErrors] = useState(0);
+const [win, setWin] = useState(0);
 
 function displayWord (){
   return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
@@ -34,10 +35,17 @@ function handleLetterClick (letter){
     if (guesses.includes(letter) || errors >= maxErrors )
       return;
     if (!word.includes(letter)){
-        setErrors(errors + 1);
+        setErrors(prevErrors => prevErrors +1);
      }
      setGuesses([...guesses,letter]);
 }
+
+useEffect(() => {
+  const isWordGuesses = word.split('').every(letter => guesses.includes(letter));
+  if(isWordGuesses){
+    setWin(prevWin => prevWin + 1);
+  }
+}, [guesses, word]);
 
 function getButtonClass(letter) {
     if(!guesses.includes(letter))
@@ -71,7 +79,7 @@ function renderButton() {
     return (
         <>
   <div className='resultContainer'>
-    <p>Win</p>
+    <p>Win {win}</p>
     <p>Looses</p>
   </div>
   <div className='gameContainer'>
