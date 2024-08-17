@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import hangman0 from '../img/hangman0.png';
 import hangman1 from '../img/hangman1.png';
 import hangman2 from '../img/hangman2.png';
@@ -10,7 +10,6 @@ import './Game.css'
 import { WordList } from '../wordsList/WordsList';
 
 export function Game(){
-const savedGuesses = 'guesses';
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const maxErrors = 6;
 const image = [
@@ -24,23 +23,8 @@ const image = [
 ];
 
 const [word, setWord] = useState(WordList());
-const [guesses, setGuesses] = useState(readSavedGuesses());
+const [guesses, setGuesses] = useState([]);
 const [errors, setErrors] = useState(0);
-
-useEffect(() => {
-    localStorage.setItem(savedGuesses, JSON.stringify(guesses));
-  }, [guesses]);
-
-function readSavedGuesses() {
-    const localGuesses = localStorage.getItem(savedGuesses);
-
-    if (localGuesses) {
-      return JSON.parse(localGuesses);
-    }
-
-    return [];
-  }
-
 
 function displayWord (){
   return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
@@ -48,7 +32,7 @@ function displayWord (){
 
 function handleLetterClick (letter){
     if (guesses.includes(letter) || errors >= maxErrors )
-        return;
+      return;
     if (!word.includes(letter)){
         setErrors(errors + 1);
      }
