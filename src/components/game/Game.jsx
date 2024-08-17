@@ -26,6 +26,7 @@ const [word, setWord] = useState(WordList());
 const [guesses, setGuesses] = useState([]);
 const [errors, setErrors] = useState(0);
 const [win, setWin] = useState(0);
+const [loss, setLoss] =useState(0);
 
 function displayWord (){
   return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
@@ -42,10 +43,12 @@ function handleLetterClick (letter){
 
 useEffect(() => {
   const isWordGuesses = word.split('').every(letter => guesses.includes(letter));
-  if(isWordGuesses){
-    setWin(prevWin => prevWin + 1);
+     if(isWordGuesses){
+       setWin(prevWin => prevWin + 1);
+   } else if(errors >= maxErrors){
+       setLoss(prevLoss => prevLoss + 1); 
   }
-}, [guesses, word]);
+}, [guesses, word, errors]);
 
 function getButtonClass(letter) {
     if(!guesses.includes(letter))
@@ -80,7 +83,7 @@ function renderButton() {
         <>
   <div className='resultContainer'>
     <p>Win {win}</p>
-    <p>Looses</p>
+    <p>Looses {loss}</p>
   </div>
   <div className='gameContainer'>
       <img src={getCurentImage()} alt="hangman"/>
