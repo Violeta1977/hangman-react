@@ -22,10 +22,9 @@ function handleLetterClick (letter){
         setErrors(errors + 1);
      }
      setGuesses([...guesses,letter]);
-
 }
 
-const getButtonClass= (letter)=> {
+function getButtonClass(letter) {
     if(!guesses.includes(letter))
         return 'gameBtn';
         {
@@ -33,7 +32,7 @@ const getButtonClass= (letter)=> {
     } 
 }
 
-const renderButton = () => {
+function renderButton() {
     return btn.map((letter,index) => 
       (<button className={getButtonClass(letter)} 
                key={index} 
@@ -56,7 +55,7 @@ const renderButton = () => {
         {renderButton()}
       </div>
       <div className='errorsContainer'>
-        <p className='errors'>0/6</p>
+        <p className='errors'>{errors}/{maxErrors}</p>
         <p className='errorsText'>Nope... It was WORD </p>
         <p className='errorsText'>Yes!!! You are so smart 🤩</p>
         <button className='errorsBtn'>Let`s play again</button>
