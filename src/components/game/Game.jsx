@@ -7,7 +7,7 @@ export function Game(){
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const maxErrors = 6;
 
-const [word] = useState(WordList);
+const [word, setWord] = useState(WordList());
 const [guesses, setGuesses] = useState([]);
 const [errors, setErrors] = useState(0);
 
@@ -33,6 +33,7 @@ function getButtonClass(letter) {
 }
 
 function restartGame() {
+  setWord(WordList)
     setGuesses([]);
     setErrors(0);
 

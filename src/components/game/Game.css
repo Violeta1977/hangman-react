@@ -105,5 +105,6 @@ img {
     /* width: 1.3em;
     height: 1.3em; */
     cursor: grabbing;
+    border: none;
     border-radius: 0.5em;
 }
