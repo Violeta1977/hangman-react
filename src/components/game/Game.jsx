@@ -21,11 +21,18 @@ function handleLetterClick (letter){
 
         if (!guesses.includes(letter) === word)
         setGuesses(guesses + 1);
+}
 
+const getButtonClass= (letter)=> {
+    if(!guesses.includes(letter))
+        return 'gameBtn';
+        {
+    return word.includes(letter) ? 'gameBtn correct' : 'gameBtn incorrect';
+    } 
 }
 
 const renderButton = () => {
-    return btn.map((letter,index) => (<button className='gameBtn' key={index} onClick={() => handleLetterClick(letter)}>{letter}</button>))
+    return btn.map((letter,index) => (<button className={getButtonClass(letter)} key={index} onClick={() => handleLetterClick(letter)}>{letter}</button>))
 }
 
     return (

@@ -38,6 +38,7 @@ img {
     justify-content: center;
     flex-wrap: wrap;
     width: 25rem;
+    /* gap: 0.3rem; */
 }
 
 .gameBtn {
@@ -49,7 +50,35 @@ img {
     height: 1.3em;
     cursor: grabbing;
     border-radius: 0.5em;
-    /* border: none; */
+    border: none;
+    position: relative;
+}
+
+.gameBtn.correct {
+    border: 3px solid green;
+    border-radius: 0.6em;
+    /* color: green; */
+}
+
+/* .gameBtn.incorrect {
+    border: 3px solid red;
+} */
+
+.gameBtn.incorrect::before,
+.gameBtn.incorrect::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 90%;
+    background-color: red;
+}
+
+.gameBtn.incorrect::before {
+    transform: rotate(70deg);
+}
+
+.gameBtn.incorrect::after {
+    transform: rotate(-60deg);
 }
 
 .errorsContainer {
