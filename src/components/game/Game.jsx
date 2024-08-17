@@ -32,12 +32,15 @@ function getButtonClass(letter) {
     } 
 }
 
+const isGameOver = errors >= maxErrors;
+const isGameWon = displayWord().split(' ').join('') === word;
+
 function renderButton() {
     return btn.map((letter,index) => 
       (<button className={getButtonClass(letter)} 
                key={index} 
                onClick={() => handleLetterClick(letter)}
-               disabled={guesses.includes(letter)} 
+               disabled={guesses.includes(letter)|| isGameOver||isGameWon} 
       >{letter}</button>))
 }
 
@@ -56,9 +59,9 @@ function renderButton() {
       </div>
       <div className='errorsContainer'>
         <p className='errors'>{errors}/{maxErrors}</p>
-        <p className='errorsText'>Nope... It was WORD </p>
-        <p className='errorsText'>Yes!!! You are so smart 🤩</p>
-        <button className='errorsBtn'>Let`s play again</button>
+        {isGameOver && <p className='errorsText'>Nope... It was {word} </p>}
+        {isGameWon && <p className='errorsText'>Yes!!! You are so smart 🤩</p>}
+        <button className='restartBtn'>Let`s play again</button>
       </div>
     </div>
   </div>
