@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { WordList } from '../wordsList/WordsList';
+import './Game.css'
 import hangman0 from '../img/hangman0.png';
 import hangman1 from '../img/hangman1.png';
 import hangman2 from '../img/hangman2.png';
@@ -6,8 +8,6 @@ import hangman3 from '../img/hangman3.png';
 import hangman4 from '../img/hangman4.png';
 import hangman5 from '../img/hangman5.png';
 import hangman6 from '../img/hangman6.png';
-import './Game.css'
-import { WordList } from '../wordsList/WordsList';
 
 export function Game(){
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -82,8 +82,8 @@ function renderButton() {
     return (
         <>
   <div className='resultContainer'>
-    <p>Win {win}</p>
-    <p>Looses {loss}</p>
+    <p>Good job! {win}</p>
+    <p>Mayby next time. {loss}</p>
   </div>
   <div className='gameContainer'>
       <img src={getCurentImage()} alt="hangman"/>
@@ -96,7 +96,7 @@ function renderButton() {
         <p className='errors'>{errors}/{maxErrors}</p>
         {isGameOver && <p className='errorsText'>Nope... It was {word} </p>}
         {isGameWon && <p className='errorsText'>Yes!!! You are so smart 🤩</p>}
-        <button className='restartBtn' onClick={restartGame}>Let`s play again</button>
+        {(isGameOver || isGameWon) && (<button className='restartBtn' onClick={restartGame}>Let`s play again</button>)}
       </div>
     </div>
   </div>
