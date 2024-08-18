@@ -98,6 +98,9 @@ function getCurentImage() {
   return image[errors];
 }
 
+const isGameLoss = errors >= maxErrors;
+const isGameWon = displayWord().split(' ').join('') === word;
+
 function renderButton() {
     return btn.map((letter,index) => 
       (<button className={getButtonClass(letter)} 
@@ -106,8 +109,22 @@ function renderButton() {
                disabled={guesses.includes(letter)|| isGameLoss||isGameWon}>{letter}</button>)) 
 }
 
-const isGameLoss = errors >= maxErrors;
-const isGameWon = displayWord().split(' ').join('') === word;
+function renderResultMessage(){
+  if (isGameLoss){
+    return <p className='errorsText'>Nope... It was {word} </p>
+  } else if (isGameWon){
+    return <p className='errorsText'>Yes!!! You are so smart 🤩</p>
+  };
+  return null;
+}
+
+function renderRestartBtn() {
+  if (isGameLoss || isGameWon){
+    return <button className='restartBtn' 
+    onClick={restartGame}>Let`s play again</button>;
+  }
+  return null;
+}
 
     return (
         <>
@@ -124,9 +141,8 @@ const isGameWon = displayWord().split(' ').join('') === word;
       </div>
       <div className='errorsContainer'>
         <p className='errors'>{errors}/{maxErrors}</p>
-        {isGameLoss && <p className='errorsText'>Nope... It was {word} </p>}
-        {isGameWon && <p className='errorsText'>Yes!!! You are so smart 🤩</p>}
-        {(isGameLoss || isGameWon) && (<button className='restartBtn' onClick={restartGame}>Let`s play again</button>)}
+        {renderResultMessage()}
+        {renderRestartBtn()}
       </div>
     </div>
   </div>
