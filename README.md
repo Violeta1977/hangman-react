@@ -15,8 +15,6 @@ This project is for educational porpuses only. Pull request are welcome, but pri
 
 Site published at: https://github.com/Violeta1977/hangman-react
 
-Design: [React](https://react.theme-land.com/theme-five)
-
 ## 🎯 Project features/goals
 
 -   Github pages
@@ -65,6 +63,9 @@ Would like to run this project locally? Open terminal and follow these steps:
     ```sh
     npm run dev
     ```
+5. Open in browser
+   Open [http://localhost:5173/]
+   (http://localhost:5173/) in your web browser to view the project
 
 ## 👀 Overview
 
