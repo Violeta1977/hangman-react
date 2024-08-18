@@ -28,4 +28,18 @@ h1 {
     justify-content: center;
     padding: 2rem;
     font-size: 3rem;
+    text-decoration: underline;
+}
+
+@media (max-width: 400px) {
+    body {
+        background-size: 15px 15px;
+    }
+    body::before {
+        left: 2rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
 }

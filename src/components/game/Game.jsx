@@ -28,19 +28,6 @@ const [errors, setErrors] = useState(0);
 const [win, setWin] = useState(0);
 const [loss, setLoss] =useState(0);
 
-function displayWord (){
-  return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
-};
-
-function handleLetterClick (letter){
-    if (guesses.includes(letter) || errors >= maxErrors )
-      return;
-    if (!word.includes(letter)){
-        setErrors(prevErrors => prevErrors +1);
-     }
-     setGuesses([...guesses,letter]);
-}
-
 useEffect(() => {
   function handleKeyup(e) {
     const letter =  e.key.toUpperCase();
@@ -77,6 +64,21 @@ useEffect(() => {
        setLoss(prevLoss => prevLoss + 1); 
   }
 }, [guesses, word, errors]);
+
+
+function displayWord (){
+  return word.split('').map(letter =>(guesses.includes(letter) ? letter : '_')).join('');
+};
+
+function handleLetterClick (letter){
+    if (guesses.includes(letter) || errors >= maxErrors )
+      return;
+    if (!word.includes(letter)){
+        setErrors(prevErrors => prevErrors +1);
+     }
+     setGuesses([...guesses,letter]);
+}
+
 
 function getButtonClass(letter) {
     if(!guesses.includes(letter))
