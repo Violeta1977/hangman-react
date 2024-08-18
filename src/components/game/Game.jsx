@@ -42,6 +42,34 @@ function handleLetterClick (letter){
 }
 
 useEffect(() => {
+  function handleKeyup(e) {
+    const letter =  e.key.toUpperCase();
+      //  grazina true arba false
+      if (isGameLoss || isGameWon) {
+        console.log(isGameLoss);
+        console.log(isGameWon);
+
+        // patikrinmas ar nuspausta klavisa yra enter
+            if (e.key === 'Enter'){
+              console.log('enter pressed, restarting game...');
+              restartGame();
+            }
+            return;
+      }
+      // patikrinimas ar nuspausta klavisa yra raide
+      if (letter.length === 1 && letter >= 'A' && letter <= 'Z') {
+        handleLetterClick(letter);
+      }
+  };
+  
+    window.addEventListener('keyup', handleKeyup);
+
+  return () => {
+    window.removeEventListener('keyup', handleKeyup);
+  }
+});
+
+useEffect(() => {
   const isWordGuesses = word.split('').every(letter => guesses.includes(letter));
      if(isWordGuesses){
        setWin(prevWin => prevWin + 1);
@@ -59,7 +87,9 @@ function getButtonClass(letter) {
 }
 
 function restartGame() {
-  setWord(WordList)
+   console.log('game is restarting...');
+  
+    setWord(WordList)
     setGuesses([]);
     setErrors(0);
 }
@@ -68,16 +98,16 @@ function getCurentImage() {
   return image[errors];
 }
 
-const isGameOver = errors >= maxErrors;
-const isGameWon = displayWord().split(' ').join('') === word;
-
 function renderButton() {
     return btn.map((letter,index) => 
       (<button className={getButtonClass(letter)} 
                key={index} 
                onClick={() => handleLetterClick(letter)}
-               disabled={guesses.includes(letter)|| isGameOver||isGameWon}>{letter}</button>)) 
+               disabled={guesses.includes(letter)|| isGameLoss||isGameWon}>{letter}</button>)) 
 }
+
+const isGameLoss = errors >= maxErrors;
+const isGameWon = displayWord().split(' ').join('') === word;
 
     return (
         <>
@@ -94,9 +124,9 @@ function renderButton() {
       </div>
       <div className='errorsContainer'>
         <p className='errors'>{errors}/{maxErrors}</p>
-        {isGameOver && <p className='errorsText'>Nope... It was {word} </p>}
+        {isGameLoss && <p className='errorsText'>Nope... It was {word} </p>}
         {isGameWon && <p className='errorsText'>Yes!!! You are so smart 🤩</p>}
-        {(isGameOver || isGameWon) && (<button className='restartBtn' onClick={restartGame}>Let`s play again</button>)}
+        {(isGameLoss || isGameWon) && (<button className='restartBtn' onClick={restartGame}>Let`s play again</button>)}
       </div>
     </div>
   </div>
