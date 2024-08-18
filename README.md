@@ -1,12 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 ![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 ![Security Status](https://img.shields.io/security-headers?label=Security&url=https%3A%2F%2Fgithub.com&style=flat-square)
 ![Gluten Status](https://img.shields.io/badge/Gluten-Free-green.svg)
@@ -33,6 +24,11 @@ Design: [React](https://react.theme-land.com/theme-five)
 -   responsive design
 
 ## 🧰 Getting Started
+
+## 💻 System Requirements
+
+-   Node.js >= 14.x
+-   npm >= 6.x
 
 ### 💻 Prerequisites
 
@@ -70,6 +66,16 @@ Would like to run this project locally? Open terminal and follow these steps:
     ```sh
     npm run dev
     ```
+
+## 👀 Overview
+
+This project is a web-based implementation of the classic "Hangman" game. The application is build using React and Vite, with a focus on providing a responsive and user-friendly interface. The game challenges the player to guess the word before running out of attemts.
+
+## ✍️ Usage
+
+-   Start the game by clicking on the letters to guess the word.
+-   You have 6 attemts to guess the correct word.
+-   After the game ends, click "Let's play again" to start a new round.
 
 ### 🧪 Running tests
 
