@@ -25,7 +25,7 @@ This project is for educational porpuses only. Pull request are welcome, but pri
 
 Site published at: https://github.com/Violeta1977/hangman-react
 
-Design: React
+Design: [React](https://react.theme-land.com/theme-five)
 
 ## 🎯 Project features/goals
 
