@@ -63,9 +63,6 @@ Would like to run this project locally? Open terminal and follow these steps:
     ```sh
     npm run dev
     ```
-5. Open in browser
-   Open [http://localhost:5173/]
-   (http://localhost:5173/) in your web browser to view the project
 
 ## 👀 Overview
 
