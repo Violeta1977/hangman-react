@@ -89,6 +89,9 @@ img {
 .errorsText {
     font-size: 2rem;
 }
+.errorsTextWord {
+    color: red;
+}
 .restartBtn {
     font-family: 'Indie Flower', cursive;
     font-weight: bolder;

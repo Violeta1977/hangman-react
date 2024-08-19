@@ -97,7 +97,7 @@ function renderButton() {
 
 function renderResultMessage(){
   if (isGameLoss){
-    return <p className='errorsText'>Nope...🤓 It was {word} </p>
+    return <p className='errorsText'>Nope...🤓 It was <span className='errorsTextWord'>{word}</span></p>
   } else if (isGameWon){
     return <p className='errorsText'>Yes!!! You are so smart 🤩</p>
   };
