@@ -12,15 +12,15 @@ import hangman6 from '../img/hangman6.png';
 export function Game(){
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const maxErrors = 6;
-const image = [
-  hangman0,
-  hangman1,
-  hangman2,
-  hangman3,
-  hangman4,
-  hangman5,
-  hangman6,
-];
+const image = {
+  0: hangman0,
+  1: hangman1,
+  2: hangman2,
+  3: hangman3,
+  4: hangman4,
+  5: hangman5,
+  6: hangman6,
+};
 
 const [word, setWord] = useState(WordList());
 const [guesses, setGuesses] = useState([]);
@@ -95,9 +95,7 @@ function restartGame() {
 }
 
 function getCurentImage() {
-  return image[errors];
-  // return errors in image;
-  
+  return errors in image ? image[errors] : image[0];
 }
 
 const isGameLoss = errors >= maxErrors;
