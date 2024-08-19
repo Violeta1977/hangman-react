@@ -4,7 +4,6 @@ body * {
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Indie Flower', cursive;
     background: linear-gradient(#bbb, transparent 1px),
@@ -13,7 +12,6 @@ body {
     background-position: center center;
     cursor: default;
 }
-
 body::before {
     content: '';
     width: 2px;
@@ -22,7 +20,6 @@ body::before {
     left: 4rem;
     background-color: rgba(255, 0, 0, 0.6);
 }
-
 h1 {
     display: flex;
     justify-content: center;
@@ -30,8 +27,15 @@ h1 {
     font-size: 3rem;
     text-decoration: underline;
 }
-
-@media (max-width: 400px) {
+@media (max-width: 900px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    body::before {
+        left: 1.7rem;
+    }
+}
+@media (max-width: 600px) {
     body {
         background-size: 15px 15px;
     }

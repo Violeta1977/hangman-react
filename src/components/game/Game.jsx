@@ -1,6 +1,6 @@
+import './Game.css'
 import { useEffect, useState } from 'react';
 import { WordList } from '../wordsList/WordsList';
-import './Game.css'
 import hangman0 from '../img/hangman0.png';
 import hangman1 from '../img/hangman1.png';
 import hangman2 from '../img/hangman2.png';
@@ -35,8 +35,7 @@ useEffect(() => {
       if (isGameLoss || isGameWon) {
         console.log(isGameLoss);
         console.log(isGameWon);
-
-        // patikrinmas ar nuspausta klavisa yra enter
+        // patikrinimas ar nuspausta klavisa yra enter
             if (e.key === 'Enter'){
               console.log('enter pressed, restarting game...');
               restartGame();
@@ -78,7 +77,6 @@ function handleLetterClick (letter){
      }
      setGuesses([...guesses,letter]);
 }
-
 
 function getButtonClass(letter) {
     if(!guesses.includes(letter))
@@ -129,7 +127,7 @@ function renderRestartBtn() {
 }
 
     return (
-        <>
+ <>
   <div className='resultContainer'>
     <p>Good job! {win}</p>
     <p>Mayby next time. {loss}</p>
@@ -148,6 +146,6 @@ function renderRestartBtn() {
       </div>
     </div>
   </div>
-  </>
+</>
   )
 }
