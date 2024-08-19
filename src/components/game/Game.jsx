@@ -129,8 +129,8 @@ function renderRestartBtn() {
     return (
  <>
   <div className='resultContainer'>
-    <p>Good job! <span className='result'>{win}</span></p>
-    <p>Mayby next time. <span className='result'>{loss}</span></p>
+    <p>You`re a genius!🥳 <span className='result'>{win}</span></p>
+    <p>Not today...🤪 <span className='result'>{loss}</span></p>
   </div>
   <div className='gameContainer'>
       <img src={getCurentImage()} alt="hangman"/>
