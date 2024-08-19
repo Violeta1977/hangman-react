@@ -1,26 +1,11 @@
 import './Game.css'
 import { useEffect, useState } from 'react';
 import { WordList } from '../wordsList/WordsList';
-import hangman0 from '../img/hangman0.png';
-import hangman1 from '../img/hangman1.png';
-import hangman2 from '../img/hangman2.png';
-import hangman3 from '../img/hangman3.png';
-import hangman4 from '../img/hangman4.png';
-import hangman5 from '../img/hangman5.png';
-import hangman6 from '../img/hangman6.png';
+import image from '../img/Images';
 
 export function Game(){
 const btn = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const maxErrors = 6;
-const image = {
-  0: hangman0,
-  1: hangman1,
-  2: hangman2,
-  3: hangman3,
-  4: hangman4,
-  5: hangman5,
-  6: hangman6,
-};
 
 const [word, setWord] = useState(WordList());
 const [guesses, setGuesses] = useState([]);
@@ -95,6 +80,7 @@ function restartGame() {
 }
 
 function getCurentImage() {
+ 
   return errors in image ? image[errors] : image[0];
 }
 
