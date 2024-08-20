@@ -46,12 +46,12 @@ https://git-scm.com
 Would like to run this project locally? Open terminal and follow these steps:
 
 1. Clone the repo
-    ```sh
-    git clone https://github.com/Violeta1977/hangman-react
-    ```
-2. Open folder named "hangman-react"
 
-3. Install NPM packages
+    ```sh
+    git clone https://github.com/Violeta1977/hangman-react.git
+    ```
+
+2. Install NPM packages
     ```sh
     npm i
     ```
@@ -59,7 +59,7 @@ Would like to run this project locally? Open terminal and follow these steps:
     ```sh
     npm install
     ```
-4. Run the server
+3. Run the server
     ```sh
     npm run dev
     ```
