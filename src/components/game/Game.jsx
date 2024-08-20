@@ -41,7 +41,7 @@ useEffect(() => {
 });
 
 useEffect(() => {
-  const isWordGuesses = word.split('').every(letter => guesses.includes(letter));
+  const isWordGuesses = word.split('').filter(letter => guesses.includes(letter)).length === word.length;
      if(isWordGuesses){
        setWin(prevWin => prevWin + 1);
    } else if(errors >= maxErrors){
