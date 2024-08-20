@@ -70,9 +70,9 @@ This project is a web-based implementation of the classic "Hangman" game. The ap
 
 ## ✍️ Usage
 
--   Start the game by clicking on the letters to guess the word.
+-   Start the game by clicking on the letters or by typing them on your keyboard to guess the word.
 -   You have 6 attemts to guess the correct word.
--   After the game ends, click "Let's play again" to start a new round.
+-   After the game ends, click "Let's play again" or press "Enter" to start a new round.
 
 ### 🧪 Running tests
 
